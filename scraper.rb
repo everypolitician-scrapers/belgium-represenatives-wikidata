@@ -29,3 +29,4 @@ WikiData.ids_from_pages('nl', members.map { |c| c[:wikiname] }).each_with_index 
   ScraperWiki.save_sqlite([:id], data)
 end
 
+warn RestClient.post ENV['MORPH_REBUILDER_URL'], {} if ENV['MORPH_REBUILDER_URL']
