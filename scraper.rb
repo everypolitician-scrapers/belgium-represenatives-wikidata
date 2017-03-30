@@ -6,4 +6,7 @@ require 'wikidata/fetcher'
 
 existing = EveryPolitician::Index.new.country("Belgium").lower_house.popolo.persons.map(&:wikidata).compact
 names = EveryPolitician::Wikidata.morph_wikinames(source: 'everypolitician-scrapers/belgium-representatives-wikipedia', column: 'wikiname__nl')
-EveryPolitician::Wikidata.scrape_wikidata(ids: existing, names: { nl: names })
+
+ids = %w(Q29051908)
+
+EveryPolitician::Wikidata.scrape_wikidata(ids: existing | ids, names: { nl: names })
